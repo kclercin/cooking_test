@@ -1,0 +1,21 @@
+p#notice
+  = notice
+
+h1.page-header
+  = @recipe.title
+  .pull-right
+    small
+      = link_to 'Retour a la liste', recipes_path
+
+h3 Ingrédients
+ul
+  - @recipe.ingredients.each do |ingredient|
+    li
+      | #{ingredient.quantity} #{ingredient.name}
+
+- @recipe.steps.each do |step|
+  strong= step.title
+  p= simple_format step.content
+
+div
+  = link_to 'Edit', edit_recipe_path(@recipe)

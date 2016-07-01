@@ -1,0 +1,24 @@
+p#notice
+  = notice
+h1
+  | Recettes
+  .pull-right
+    small
+      = link_to 'Nouvelle recette', new_recipe_path
+table.table
+  thead
+    tr
+      th Title
+      th
+  tbody
+    - @recipes.each do |recipe|
+      tr
+        td = recipe.title
+        td
+          .pull-right
+            => link_to recipe do
+              = fa_icon "eye"
+            => link_to edit_recipe_path(recipe) do
+              = fa_icon "edit"
+            => link_to recipe, method: :delete, data: {confirm: 'Are you sure?'} do
+              = fa_icon "trash"

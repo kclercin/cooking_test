@@ -1,0 +1,28 @@
+= simple_form_for @recipe, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
+  - if @recipe.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@recipe.errors.count, "error")
+        | prohibited this recipe from being saved:
+      ul
+        - @recipe.errors.full_messages.each do |message|
+          li= message
+
+  = f.input :title
+  .col-xs-12.col-md-9.col-md-offset-3
+    h3 Ingrédients :
+
+    = f.simple_fields_for :ingredients do |ingredient|
+      = render 'ingredient_fields', f: ingredient
+    .links
+      = link_to_add_association 'Ajouter un ingrédient', f, :ingredients
+
+    h3 Etapes :
+
+    = f.simple_fields_for :steps do |step|
+      = render 'step_fields', f: step
+    .links
+      = link_to_add_association 'Ajouter une étape', f, :steps
+      
+  .actions.pull-right
+    = f.submit "Enregistrer", class: "btn btn-success"
