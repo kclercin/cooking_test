@@ -6,7 +6,7 @@ h1.page-header
   .pull-right
     small
       = link_to 'Retour a la liste', recipes_path
-
+= simple_format(@recipe.description)
 h3 Ingrédients
 ul
   - @recipe.ingredients.each do |ingredient|
