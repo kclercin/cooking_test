@@ -14,4 +14,17 @@
 //= require jquery_ujs
 //= require cocoon
 //= require bootstrap-sprockets
+//= require lib/slick.js
 //= require turbolinks
+
+document.addEventListener("turbolinks:load", function() {
+  $(".recipe-step").slick({
+    accessibility: false,
+    arrows: false,
+    draggable: false,
+    infinite: false
+  });
+  $("tr.recipe").on("click", function(e){
+    Turbolinks.visit($(this).data("url"));
+  });
+})

@@ -1,7 +1,6 @@
 - content_for :page_title
   | #{@recipe.title}
 
-
 .recipe-step
   div
     = simple_format @recipe.description
@@ -14,8 +13,7 @@
 
   - @recipe.steps.each do |step|
     div
-      strong= step.title
+      div.text-center
+        h2
+          = step.title
       = simple_format step.content
-
-javascript:
-  $(".recipe-step").slick();

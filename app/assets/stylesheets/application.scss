@@ -15,3 +15,27 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+ @import "lib/slick";
+ @import "lib/slick-theme";
+
+ body.mobile-app{
+   background-color: #ecf0f1;
+  > .container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .slick-slide{
+    height: 100vh;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  a.recipe {
+    &:active, &:focus{
+      background-color: darken(#ecf0f1, 20%);
+    }
+    display: block;
+    padding: 15px;
+    font-size: 25px !important;
+    border-bottom: #e2e2e2 1px solid;
+  }
+ }
